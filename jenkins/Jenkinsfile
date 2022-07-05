@@ -14,15 +14,7 @@ pipeline{
 	stages{
 		stage('Docker Build') {
             steps {
-                container('docker') {
-			sh "service docker start"
-                    sh "docker build -t ${REGISTRY}:${VERSION} ."
-                }
-		    container('docker') {
-                    withDockerRegistry([credentialsId: "${REGISTRY_CREDENTIAL}", url: "https://auh.ocir.io"]) {
-                        sh "docker push ${REGISTRY}:${VERSION}"
-                    }
-                }
+                docker.build("test/nodejs")
 		    container('helm') {
                     sh "helm version"
                 }
