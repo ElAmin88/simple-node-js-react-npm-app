@@ -12,7 +12,7 @@ pipeline{
         }
 	}
 	stages{
-		
+		stage("docker"){
             steps {
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
 			docker.build("test/nodejs")
@@ -23,6 +23,7 @@ pipeline{
                 }
             
         }
+		      }
 		stage("test"){
 			steps{
 			nodejs(nodeJSInstallationName:'nodejs'){	
