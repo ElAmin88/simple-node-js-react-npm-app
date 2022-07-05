@@ -1,4 +1,12 @@
 pipeline{
+	environment {
+        DEPLOY = "${env.BRANCH_NAME == "master" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
+        NAME = "${env.BRANCH_NAME == "master" ? "example" : "example-staging"}"
+        VERSION = 1.1.1
+        DOMAIN = 'localhost'
+        REGISTRY = 'test/nodejs'
+        REGISTRY_CREDENTIAL = 'conatiner-registery'
+    }
 	agent {
         kubernetes {
             defaultContainer 'jnlp'
@@ -9,7 +17,12 @@ pipeline{
 		stage('Docker Build') {
             steps {
                 container('docker') {
-                    sh "docker -v"
+                    sh "sh "docker build -t ${REGISTRY}:${VERSION} ."
+                }
+		    container('docker') {
+                    withDockerRegistry([credentialsId: "${REGISTRY_CREDENTIAL}", url: "https://auh.ocir.io"]) {
+                        sh "docker push ${REGISTRY}:${VERSION}"
+                    }
                 }
 		    container('helm') {
                     sh "helm version"
