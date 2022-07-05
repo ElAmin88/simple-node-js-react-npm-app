@@ -15,6 +15,7 @@ pipeline{
 		stage('Docker Build') {
             steps {
                 container('docker') {
+			sh "ls -al /var/run/docker.sock"
                     sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
 		    container('docker') {
