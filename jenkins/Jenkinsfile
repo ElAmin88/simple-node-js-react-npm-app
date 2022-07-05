@@ -6,7 +6,13 @@ pipeline{
         }
 	}
 	stages{
-		
+		stage('Docker Build') {
+            steps {
+                container('docker') {
+                    sh "docker -v"
+                }
+            }
+        }
 		stage("test"){
 			steps{
 			nodejs(nodeJSInstallationName:'nodejs'){	
