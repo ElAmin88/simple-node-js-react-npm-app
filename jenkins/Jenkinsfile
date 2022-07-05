@@ -4,6 +4,7 @@ pipeline{
             defaultContainer 'jnlp'
             yamlFile 'build.yaml'
         }
+	}
 	stages{
 		
 		stage("test"){
