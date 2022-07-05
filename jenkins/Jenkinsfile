@@ -15,7 +15,7 @@ pipeline{
 		stage('Docker Build') {
             steps {
                 container('docker') {
-                    sh "sh "docker build -t ${REGISTRY}:${VERSION} ."
+                    sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
 		    container('docker') {
                     withDockerRegistry([credentialsId: "${REGISTRY_CREDENTIAL}", url: "https://auh.ocir.io"]) {
