@@ -4,11 +4,12 @@ pipeline{
 		
 		stage("test"){
 			steps{
+				def scannerHome = tool 'sonarqube-container';
 			nodejs(nodeJSInstallationName:'nodejs'){	
 			   sh "npm install"
 			   sh "npm run build"
 				script {
-				def scannerHome = tool 'sonarqube-container';
+				
 				   withSonarQubeEnv("test-npm") {
 				   sh "${tool("sonarqube-container")}/bin/sonar-scanner \
 				   -Dsonar.projectKey=test-npm  \
