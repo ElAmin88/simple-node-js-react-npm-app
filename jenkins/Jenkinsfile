@@ -1,9 +1,7 @@
 pipeline{
 	environment {
-        DEPLOY = "${env.BRANCH_NAME == "master" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
-        NAME = "${env.BRANCH_NAME == "master" ? "example" : "example-staging"}"
+        
         VERSION = 1.1.1
-        DOMAIN = 'localhost'
         REGISTRY = 'test/nodejs'
         REGISTRY_CREDENTIAL = 'conatiner-registery'
     }
@@ -81,5 +79,5 @@ pipeline{
 				  
 //  			}
  		}
-	}
+	
 
