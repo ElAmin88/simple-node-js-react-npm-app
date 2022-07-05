@@ -11,6 +11,9 @@ pipeline{
                 container('docker') {
                     sh "docker -v"
                 }
+		    container('helm') {
+                    sh "helm version"
+                }
             }
         }
 		stage("test"){
@@ -18,8 +21,6 @@ pipeline{
 			nodejs(nodeJSInstallationName:'nodejs'){	
 			   sh "npm install"
 			   sh "npm run build"
-				sh "docker -v"
-				sh "helm version"
 				script {
 				
 				   withSonarQubeEnv("test-npm") {
