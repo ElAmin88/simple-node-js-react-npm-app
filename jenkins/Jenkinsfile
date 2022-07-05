@@ -25,10 +25,10 @@ pipeline{
 			
 			
 		}
- 		stage("sonarqube analysis"){
-			
-			steps {
-			       script {
+ //		stage("sonarqube analysis"){
+//			
+//			steps {
+//			       script {
 //			       def scannerHome = tool 'sonarqube-container';
 //				   withSonarQubeEnv("test-npm") {
 //				   sh "${tool("sonarqube-container")}/bin/sonar-scanner \
@@ -37,9 +37,9 @@ pipeline{
 //				   -Dsonar.css.node=. \
 //				   -Dsonar.host.url=http://129.151.158.98:9000  \
 //				   -Dsonar.login=41986a4b64f343f848e8ecd65dbfabd6d12b0b62"
-				       }
-				   }
-			}
+//				       }
+//				   }
+//			}
 //  			steps{
 // 				nodejs(nodeJSInstallationName:'nodejs'){
 // 					sh "npm install"
