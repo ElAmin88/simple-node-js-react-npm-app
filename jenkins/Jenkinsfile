@@ -7,6 +7,7 @@ pipeline{
 			nodejs(nodeJSInstallationName:'nodejs'){	
 			   sh "npm install"
 			   sh "npm run build"
+				script {
 				def scannerHome = tool 'sonarqube-container';
 				   withSonarQubeEnv("test-npm") {
 				   sh "${tool("sonarqube-container")}/bin/sonar-scanner \
@@ -16,6 +17,7 @@ pipeline{
 				   -Dsonar.host.url=http://129.151.158.98:9000  \
 				   -Dsonar.login=41986a4b64f343f848e8ecd65dbfabd6d12b0b62"
 				       }
+				}
 		          // sh "docker -v"
 			}	
 			}
