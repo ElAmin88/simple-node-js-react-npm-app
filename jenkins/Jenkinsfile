@@ -15,6 +15,8 @@ pipeline{
 		stage("docker"){
             steps {
 		    script{
+			def dockerHome = tool 'docker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
 			docker.build("test/nodejs",".")
 		}
