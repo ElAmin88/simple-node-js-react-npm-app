@@ -14,9 +14,11 @@ pipeline{
 	stages{
 		stage("docker"){
             steps {
+		    script{
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
 			docker.build("test/nodejs")
 		}
+		    }
                 
 		    container('helm') {
                     sh "helm version"
