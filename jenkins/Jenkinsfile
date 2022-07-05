@@ -16,7 +16,7 @@ pipeline{
             steps {
 		    script{
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
-			docker.build("test/nodejs")
+			docker.build("test/nodejs",".")
 		}
 		    }
                 
