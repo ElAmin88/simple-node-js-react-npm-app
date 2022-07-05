@@ -21,7 +21,7 @@ pipeline{
 		    container('helm') {
                     sh "helm version"
                 }
-            }
+            
         }
 		stage("test"){
 			steps{
