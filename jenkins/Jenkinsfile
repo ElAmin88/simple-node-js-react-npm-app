@@ -18,9 +18,10 @@ pipeline{
 		    script{
 			def dockerHome = tool 'docker'
                   env.PATH = "${dockerHome}/bin:${env.PATH}"
+			    ls /var/run/
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
-				ls /var/run/
-			    //docker.build("test/nodejs",".")
+				
+			    docker.build("test/nodejs",".")
 		}
 		    }
 //                	container('docker') {
