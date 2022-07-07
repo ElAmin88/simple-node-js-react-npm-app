@@ -17,7 +17,7 @@ pipeline{
             steps {
 		    script{
 			def dockerHome = tool 'docker'
-                  env.PATH = "${dockerHome}/bin:${env.PATH}"
+                  env.PATH = "${dockerHome}/docker:${env.PATH}"
 			    sh "ls ${dockerHome}"
 		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
 				
