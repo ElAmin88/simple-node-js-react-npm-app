@@ -5,6 +5,12 @@ metadata:
     some-label: pod
 spec:
   containers:
+    - name: docker
+      image: docker:19.03
+      command:
+        - cat
+      tty: true
+      privileged: true
     - name: helm
       image: lachlanevenson/k8s-helm:v3.1.1
       command:
