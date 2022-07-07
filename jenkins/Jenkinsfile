@@ -6,10 +6,11 @@ pipeline{
         REGISTRY_CREDENTIAL = 'conatiner-registery'
     }
 	agent {
-        kubernetes {
-            defaultContainer 'jnlp'
-            yamlFile 'build.yaml'
-        }
+        any
+		//kubernetes {
+        //    defaultContainer 'jnlp'
+        //    yamlFile 'build.yaml'
+        //}
 	}
 	stages{
 		stage("docker"){
