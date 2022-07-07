@@ -15,14 +15,16 @@ pipeline{
 	stages{
 		stage("docker"){
             steps {
-		    script{
-			def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
-			docker.build("test/nodejs",".")
-		}
-		    }
-                
+//		    script{
+//			def dockerHome = tool 'docker'
+//                  env.PATH = "${dockerHome}/bin:${env.PATH}"
+//		    docker.withRegistry('https://auh.ocir.io','conatiner-registery'){
+//			docker.build("test/nodejs",".")
+//		}
+//		    }
+                	container('docker') {
+                    	sh "docker build -t ${REGISTRY}:${VERSION} ."
+                	}
 		    container('helm') {
                     sh "helm version"
                 }
