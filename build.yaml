@@ -7,8 +7,7 @@ spec:
   containers:
     - name: docker
       image: docker:19.03
-      command:
-        - service docker start
+      command: ["service docker start"]
       tty: true
       privileged: true
     - name: helm
