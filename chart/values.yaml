@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: elamin88/node-test
-  tag: usage
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:
