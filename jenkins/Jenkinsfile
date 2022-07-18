@@ -45,6 +45,7 @@ pipeline{
 			steps {
 				container('helm') {
 						sh "$PWD"
+						sh "ls"
 				}
 			}
 		}
