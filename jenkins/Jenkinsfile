@@ -44,7 +44,7 @@ pipeline{
 		stage("Helm"){
 			steps {
 				container('helm') {
-						sh "helm version"
+						sh "$PWD"
 				}
 			}
 		}
