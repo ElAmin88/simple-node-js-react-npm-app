@@ -10,6 +10,7 @@ pipeline{
 		stage("SonarQube"){
 			steps{
 				nodejs(nodeJSInstallationName:'nodejs'){	
+				sh "cd nodejs"
 				sh "npm install"
 				sh "npm run build"
 					script {
