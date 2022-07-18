@@ -44,8 +44,7 @@ pipeline{
 		stage("Helm"){
 			steps {
 				container('helm') {
-						sh "$PWD"
-						sh "ls"
+						sh "helm install nodejs ./chart"
 				}
 			}
 		}
