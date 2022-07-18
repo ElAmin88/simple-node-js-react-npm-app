@@ -45,8 +45,7 @@ pipeline{
 		stage("Helm"){
 			steps {
 				container('helm') {
-						sh "kubectl get nodes"
-						sh "kubectl get namespaces"
+						sh "helm install nodejs ./chart"
 				}
 			}
 		}
