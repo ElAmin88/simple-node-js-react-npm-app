@@ -41,6 +41,11 @@ pipeline{
 			}
 		}
  */
+		stage("Kubectl"){
+			steps{
+				sh "kubectl get nodes"
+			}
+		}
 		stage("Helm"){
 			steps {
 				container('helm') {
