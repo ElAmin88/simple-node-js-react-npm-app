@@ -12,5 +12,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "name": "continuous-test-code-coverage-guide",
+  "scripts": {
+    "start": "webpack",
+    "test": "jest --coverage --coverageDirectory=."
+  },
+   "jest": {
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ]
+   }
 }
