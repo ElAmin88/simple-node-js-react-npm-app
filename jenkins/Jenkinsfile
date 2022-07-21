@@ -6,12 +6,25 @@ pipeline{
         }
 	}
 	stages{
-		
+		stage('Test') {
+		      steps {
+			script {
+				nodejs(nodeJSInstallationName:'nodejs'){
+					sh "npm install"
+					sh 'npm run test'
+				}
+			}
+		      }
+		      post {
+			always {
+			  step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
+			}
+		      }
+		    }
 		stage("SonarQube"){
 			steps{
 				nodejs(nodeJSInstallationName:'nodejs'){	
 				sh "cd nodejs"
-				sh "npm install"
 				sh "npm run build"
 					script {
 					
